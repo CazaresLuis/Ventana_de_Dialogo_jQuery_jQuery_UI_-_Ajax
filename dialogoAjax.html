@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Creación de Ventanas de Diálogo con AJAX y PHP ::cazaresluis.com::</title>
+<link href="css/ui-darkness/jquery-ui-1.8.16.custom.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+
+<style type="text/css">
+body
+{
+	font-size:0.9em;
+}
+
+.wraper{
+	margin:0 auto;
+	width:400px;
+	height:auto;
+
+	/*Borde redondeado*/
+	border:1px solid #000;
+	border-radius: .8em;
+	-moz-border-radius: .8em;
+	-webkit-border-radius: .8em;
+	-o-border-radius: .8em;
+}
+
+.informacion
+{
+	text-align:center;
+}
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	// Damos formato a la Ventana de Diálogo	
+	$('#dialogo').dialog({
+		// Indica si la ventana se abre de forma automática
+		autoOpen: true,
+		// Indica si la ventana es modal
+		modal: true,
+		// Largo
+		width: 400,
+		// Alto
+		height: 250,
+		// Creamos los botones
+		buttons: {
+			'Fecha Server': function() {
+				// Mostrar la fecha del Servidor
+				$('#respuestaAjax').load('includes/ajaxPhp.php?accion=fechaServer');
+			},
+			'Versión PHP': function() {
+				// Ir al sitio oficial jqueryui.com
+				$('#respuestaAjax').load('includes/ajaxPhp.php?accion=phpVersion');
+			},
+			Cerrar: function() {
+				// Cerrar ventana de diálogo
+				$(this).dialog( "close" );
+			}
+			
+		}
+	});
+	
+});
+</script>
+
+</head>
+<body>
+	<div id="dialogo" title="Diálogo / AJAX / PHP" style="display:none;">
+		<p>Aquí presentaremos la respuesta cargada con AJAX</p>
+		<h3 id="respuestaAjax" style="text-align:center;">RESPONSE</h3>
+	</div>
+	<div class="wraper">
+		<div class="informacion">
+			<h3>Creando Ventanas de Diálogo</h3>
+			<h3>HTML / jQuery / jQuery UI / AJAX / PHP</h3>
+			<p>cazaresluis.com</p>
+		</div>
+	</div>
+</body>
+</html>

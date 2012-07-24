@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Creación de Ventanas de Diálogo ::cazaresluis.com::</title>
+<link href="css/ui-darkness/jquery-ui-1.8.16.custom.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+
+<style type="text/css">
+body
+{
+	font-size:0.9em;
+}
+
+.wraper{
+	margin:0 auto;
+	width:400px;
+	height:auto;
+
+	/*Borde redondeado*/
+	border:1px solid #000;
+	border-radius: .8em;
+	-moz-border-radius: .8em;
+	-webkit-border-radius: .8em;
+	-o-border-radius: .8em;
+}
+
+.informacion
+{
+	text-align:center;
+}
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	// Formateamos el botón Diálogo sencillo
+	$('#dialogSencillo').button();
+	
+	// Damos formato a la Ventana de Diálogo	
+	$('#dialogo').dialog({
+		// Indica si la ventana se abre de forma automática
+		autoOpen: false,
+		// Indica si la ventana es modal
+		modal: true,
+		// Largo
+		width: 350,
+		// Alto
+		height: 200,
+		// Creamos los botones
+		buttons: {
+			jQuery: function() {
+				// ir al sitio oficial jquery.com
+				window.location.href="http://jquery.com";
+			},
+			jQueryUI: function() {
+				// Ir al sitio oficial jqueryui.com
+				window.location.href="http://jqueryui.com";
+			},
+			Cerrar: function() {
+				// Cerrar ventana de diálogo
+				$(this).dialog( "close" );
+			}
+			
+		}
+	});
+	
+	// Mostrar Diálogo Sencillo
+	$('#dialogSencillo').click(function(){
+		$('#dialogo').dialog('open');
+	});
+	
+});
+</script>
+
+</head>
+<body>
+	<div id="dialogo" title="Diálogo Normal" style="display:none;">
+		<p>Esta es una ventana de diálogo creada con jQuery UI</p>
+	</div>
+	<div class="wraper">
+		<div class="informacion">
+			<h3>Creando Ventanas de Diálogo</h3>
+			<h3>HTML / jQuery / jQuery UI</h3>
+			<p>button <-> dialog</p>
+			<div id="dialogSencillo">Diálogo Sencillo</div>
+			<p>cazaresluis.com</p>
+		</div>
+	</div>
+</body>
+</html>
